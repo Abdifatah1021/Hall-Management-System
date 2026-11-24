@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h1>Welcome to the Hall Management System</h1>
+<p>Find a hall and book it in a few clicks.</p>
+<a href="{{ url_for('halls') }}">Browse halls</a>
+
+{% endblock %}
