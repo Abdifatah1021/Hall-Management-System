@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{# Use the shared layout. #}
+
+{% block title %}Halls{% endblock %}
+{# Browser tab title. #}
+
+{% block content %}
+<h1>Available Halls</h1>
+
+<div class="hall-list">
+    <!-- A container for all the hall cards, so CSS can arrange them. -->
+    {% for hall in halls %}
+    {# A loop: repeats the HTML below once for each hall in the list that app.py passed in. #}
+    <div class="hall-card">
+        <!-- One card per hall. -->
+        <h2>{{ hall.name }}</h2>
+        {# Prints this hall's name. hall.name reads the "name" key of the dictionary. #}
+        <p>Location: {{ hall.location }}</p>
+        <p>Capacity: {{ hall.capacity }} people</p>
+        <p>Price: RM {{ hall.price_per_hour }} per hour</p>
+    </div>
+    {% endfor %}
+    {# Ends the loop. Every for needs an endfor. #}
+</div>
+{% endblock %}
