@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;   /* A clean, readable font for the whole page. */
+    margin: 0;                         /* Removes the browser's default space around the page. */
+    background: #f5f5f5;               /* Light grey background. */
+}
+
+nav {
+    background: #1e3a5f;               /* Dark blue menu bar. */
+    padding: 16px;                     /* Space inside the bar. */
+}
+
+nav a {
+    color: white;                      /* White menu links so they show on dark blue. */
+    margin-right: 16px;                /* Space between the links. */
+    text-decoration: none;             /* Removes the underline. */
+}
+
+main {
+    max-width: 960px;                  /* Content won't stretch too wide on big screens. */
+    margin: 0 auto;                    /* "auto" on left and right centres the content. */
+    padding: 24px;                     /* Space around the content. */
+}
+
+.hall-list {
+    display: grid;                                              /* Arranges the cards in a grid. */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* As many 250px+ columns as fit; fewer on phones. */
+    gap: 16px;                                                  /* Space between cards. */
+}
+
+.hall-card {
+    background: white;                 /* Cards stand out from the grey background. */
+    padding: 16px;                     /* Space inside each card. */
+    border-radius: 8px;                /* Rounded corners. */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A soft shadow under each card. */
+}
