@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{# Use the shared layout: navbar, fonts and styles. #}
+
+{% block title %}{{ hall.name }}{% endblock %}
+{# The browser tab shows the hall's name. #}
+
+{% block content %}
+<a href="{{ url_for('halls') }}">&larr; Back to all halls</a>
+{# &larr; is the HTML code for a left arrow. #}
+
+<p class="label">{{ hall.category }} · {{ hall.code }}</p>
+{# The category and the Hall ID together, e.g. "LARGE EVENT HALL · HL-001". #}
+<h1>{{ hall.name }}</h1>
+
+<div class="arch" style="height:360px; max-width:520px;"></div>
+{# A bigger arch for the main photo. "style" here overrides the height from style.css for this one page. #}
+
+<h2>Guests</h2>
+<p>{{ hall.min_guests }} to {{ hall.capacity }} guests, seated.</p>
+
+<h2>Facilities</h2>
+<ul>
+    {% for facility in hall.facilities %}
+    {# Loops over the facilities list of this one hall. #}
+    <li>{{ facility }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Prices per seat</h2>
+<ul>
+    {% for option, price in hall.prices.items() %}
+    {# .items() gives each key AND value of the dictionary as a pair:
+       option = "Full meal", price = 45; then "Snacks", 25; and so on. #}
+    <li>{{ option }}: <strong>RM {{ price }}</strong></li>
+    {% endfor %}
+</ul>
+<p>Price = price per seat × number of guests. No extra fees.</p>
+
+<a class="btn" href="{{ url_for('halls') }}">Back to halls</a>
+{% endblock %}

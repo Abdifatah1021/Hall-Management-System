@@ -17,8 +17,9 @@
         {# The arch-shaped photo placeholder from the design. #}
         <p class="label">{{ hall.category }}</p>
         {# Small gold capital label, like "LARGE EVENT HALL". #}
-       <h2>{{ hall.name }}</h2>
-        {# The hall name, linking to its details page (Part C). #}
+       <h2><a href="{{ url_for('hall_detail', hall_id=hall.id) }}">{{ hall.name }}</a></h2>
+        {# url_for builds the link for the hall_detail function and fills in hall_id.
+   For hall 2 it produces /halls/2. #}
         <p>{{ hall.min_guests }} – {{ hall.capacity }} guests</p>
         {# Shows the allowed guest range, e.g. "150 – 400 guests". #}
         <p>From <strong>RM {{ hall.prices["Drinks only"] }}</strong> per seat</p>

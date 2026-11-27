@@ -35,9 +35,15 @@ HALLS = [
     },
 ]
 
-@app.route('/')
+@app.route("/halls/<int:hall_id>")
 def home():
     return render_template('home.html')
+
+def hall_detail(hall_id):
+    hall = next((h for h in HALLS if h["id"] == hall_id), None)
+    if hall is None:
+        abort(404)
+        return render_template("hall_detail.html", hall=hall)
 
 @app.route('/halls')
 def halls():
