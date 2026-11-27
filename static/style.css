@@ -1,35 +1,111 @@
+
+:root {                              
+    --navy: #172A46;                 
+    --blue: #263F60;                 
+    --gold: #C5A15D;                
+    --gold-ink: #7A5C24;             
+    --ivory: #F4F1E9;               
+    --white: #FFFFFF;              
+    --text: #1B2433;               
+    --muted: #5B6474;               
+    --border: #E4DDCC;             
+}
+/* Change a colour here once and every page updates. That's why we use variables. */
+
 body {
-    font-family: Arial, sans-serif;   /* A clean, readable font for the whole page. */
-    margin: 0;                         /* Removes the browser's default space around the page. */
-    background: #f5f5f5;               /* Light grey background. */
+    margin: 0;                                   /* remove the browser's default space around the page */
+    font-family: "Jost", sans-serif;             /* body font (loaded in base.html) */
+    background: var(--ivory);                    /* var(--name) reads a variable from :root */
+    color: var(--text);                          /* default text colour */
 }
 
+h1, h2, h3 {
+    font-family: "Cormorant Garamond", serif;    /* elegant heading font */
+    font-weight: 600;                            /* semi-bold */
+    color: var(--navy);                          /* headings in navy */
+}
+
+/* ---------- Navigation bar ---------- */
 nav {
-    background: #1e3a5f;               /* Dark blue menu bar. */
-    padding: 16px;                     /* Space inside the bar. */
+    background: var(--navy);                     /* navy bar */
+    border-bottom: 1px solid var(--gold);        /* thin gold line under it, like the design */
+    padding: 20px 40px;                          /* space inside: 20px top/bottom, 40px left/right */
+    display: flex;                               /* put the items in a row */
+    align-items: center;                         /* centre them vertically */
+    gap: 28px;                                   /* space between items */
+}
+
+nav .brand {
+    font-family: "Cormorant Garamond", serif;    /* logo text in the heading font */
+    font-size: 24px;
+    letter-spacing: 0.2em;                       /* spaced-out letters */
+    text-transform: uppercase;                   /* HOOLKA in capitals, without typing capitals */
+    color: var(--gold);
+    margin-right: auto;                          /* pushes every other link to the right */
 }
 
 nav a {
-    color: white;                      /* White menu links so they show on dark blue. */
-    margin-right: 16px;                /* Space between the links. */
-    text-decoration: none;             /* Removes the underline. */
+    color: var(--ivory);                         /* light links on navy */
+    text-decoration: none;                       /* no underline */
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
+nav a:hover {                                    /* :hover = when the mouse is over it */
+    color: var(--gold);
+}
+
+/* ---------- Page content ---------- */
 main {
-    max-width: 960px;                  /* Content won't stretch too wide on big screens. */
-    margin: 0 auto;                    /* "auto" on left and right centres the content. */
-    padding: 24px;                     /* Space around the content. */
+    max-width: 1100px;                           /* content doesn't stretch too wide */
+    margin: 0 auto;                              /* "auto" left and right centres it */
+    padding: 40px 24px;
 }
 
+/* ---------- Hall cards ---------- */
 .hall-list {
-    display: grid;                                              /* Arranges the cards in a grid. */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* As many 250px+ columns as fit; fewer on phones. */
-    gap: 16px;                                                  /* Space between cards. */
+    display: grid;                                                  /* grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));   /* as many 280px+ columns as fit */
+    gap: 24px;
 }
 
 .hall-card {
-    background: white;                 /* Cards stand out from the grey background. */
-    padding: 16px;                     /* Space inside each card. */
-    border-radius: 8px;                /* Rounded corners. */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A soft shadow under each card. */
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;                         /* rounded corners */
+    padding: 16px;
+}
+
+.arch {
+    height: 220px;
+    background: #DCD6C8;                         /* grey-beige placeholder until real photos exist */
+    border-radius: 999px 999px 16px 16px;        /* huge top radius = arch shape; small bottom corners */
+    box-shadow: inset 0 0 0 6px var(--white), inset 0 0 0 7px var(--gold);
+    /* two inset shadows draw a thin gold line just inside the arch: the "frame" from the design */
+}
+
+.label {                                         /* small capital labels like "LARGE EVENT HALL" */
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+    font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;                       /* lets a link have padding like a button */
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 22px;
+    border-radius: 999px;                        /* pill shape */
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background: var(--blue);
 }
