@@ -8,18 +8,31 @@
 <h1>Available Halls</h1>
 
 <div class="hall-list">
-    <!-- A container for all the hall cards, so CSS can arrange them. -->
+    {# The grid container: style.css arranges the cards inside it in columns. #}
+
     {% for hall in halls %}
-    {# A loop: repeats the HTML below once for each hall in the list that app.py passed in. #}
+    {# Repeats everything until endfor once per hall. "halls" is the list app.py sends in. #}
     <div class="hall-card">
-        <!-- One card per hall. -->
-        <h2>{{ hall.name }}</h2>
-        {# Prints this hall's name. hall.name reads the "name" key of the dictionary. #}
-        <p>Location: {{ hall.location }}</p>
-        <p>Capacity: {{ hall.capacity }} people</p>
-        <p>Price: RM {{ hall.price_per_hour }} per hour</p>
+        <div class="arch"></div>
+        {# The arch-shaped photo placeholder from the design. #}
+        <p class="label">{{ hall.category }}</p>
+        {# Small gold capital label, like "LARGE EVENT HALL". #}
+       <h2>{{ hall.name }}</h2>
+        {# The hall name, linking to its details page (Part C). #}
+        <p>{{ hall.min_guests }} – {{ hall.capacity }} guests</p>
+        {# Shows the allowed guest range, e.g. "150 – 400 guests". #}
+        <p>From <strong>RM {{ hall.prices["Drinks only"] }}</strong> per seat</p>
+        {# Reads one price from the prices dictionary: the cheapest option is "Drinks only". #}
+        {% if hall.capacity >= 100 %}
+        <p class="label">Large hall</p>
+        {% endif %}
+        {# Closes the if. #}
     </div>
+    {# Closes one hall card. #}
     {% endfor %}
-    {# Ends the loop. Every for needs an endfor. #}
+    {# Closes the loop. #}
+
 </div>
+{# Closes the hall-list grid. #}
 {% endblock %}
+{# Closes the content block. #}
